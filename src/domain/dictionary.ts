@@ -1,12 +1,14 @@
 import { z } from "zod";
 
-export const phoneticsSchema = z.array(
-  z.object({
-    text: z.string(),
-    audio: z.string().optional(),
-    sourceUrl: z.string().optional(),
-  })
-);
+export const phoneticsSchema = z
+  .array(
+    z.object({
+      audio: z.string().optional(),
+      sourceUrl: z.string().optional(),
+      text: z.string().optional(),
+    })
+  )
+  .optional();
 export type Phonetics = z.infer<typeof phoneticsSchema>;
 
 export const meaningsSchema = z.array(
@@ -28,7 +30,7 @@ export type Meanings = z.infer<typeof meaningsSchema>;
 
 export const wordInformationsSchema = z.object({
   word: z.string(),
-  phonetic: z.string(),
+  phonetic: z.string().optional(),
   phonetics: phoneticsSchema,
   meanings: meaningsSchema,
   sourceUrls: z.array(z.string()),
