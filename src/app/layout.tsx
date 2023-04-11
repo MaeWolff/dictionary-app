@@ -2,6 +2,7 @@
 
 import "../styles/globals.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Header from "@/components/home/Header";
 
 const queryClient = new QueryClient();
 
@@ -13,7 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <QueryClientProvider client={queryClient}>
-        <body>{children}</body>
+        <body>
+          <Header />
+          {children}
+        </body>
       </QueryClientProvider>
     </html>
   );
