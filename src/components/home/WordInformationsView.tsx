@@ -1,15 +1,19 @@
 import { WordInformations } from "@/domain/dictionary";
 import React from "react";
 import WordMeaningSection from "./WordMeaningSection";
+import { getPhoneticAudioUrl } from "@/domain/utils";
+import WordPhoneticAudioButton from "./WordPhoneticAudioButton";
 
 interface WordInformationsProps {
   data: WordInformations;
 }
 
 export default function WordInformationsView({ data }: WordInformationsProps) {
+  const phoneticAudioUrl = getPhoneticAudioUrl(data.phonetics);
+
   return (
     <div className="w-full flex flex-col gap-14">
-      <header className="w-full justify-space-between">
+      <header className="w-full flex flex-row justify-between">
         <div className="flex flex-col gap-2">
           <h1 className="text-5xl font-bold playfair-font">{data.word}</h1>
           <h2 className="text-xl text-violet-500">
@@ -18,6 +22,10 @@ export default function WordInformationsView({ data }: WordInformationsProps) {
               data.phonetics?.[1]?.text}
           </h2>
         </div>
+
+        {!!phoneticAudioUrl.length && (
+          <WordPhoneticAudioButton audioUrl={phoneticAudioUrl} />
+        )}
       </header>
 
       {data.meanings.map((meaning, index) => (
@@ -35,11 +43,11 @@ export default function WordInformationsView({ data }: WordInformationsProps) {
             </ul>
           </div>
 
-          {meaning.synonyms.length > 0 && (
+          {!!meaning.synonyms.length && (
             <WordMeaningSection title="Synonyms" texts={meaning.synonyms} />
           )}
 
-          {meaning.antonyms.length > 0 && (
+          {!!meaning.antonyms.length && (
             <WordMeaningSection title="Antonyms" texts={meaning.antonyms} />
           )}
         </section>
