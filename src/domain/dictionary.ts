@@ -28,7 +28,7 @@ export const meaningsSchema = z.array(
 );
 export type Meanings = z.infer<typeof meaningsSchema>;
 
-export const wordInformationsSchema = z.object({
+export const wordResultsSchema = z.object({
   word: z.string(),
   phonetic: z.string().optional(),
   phonetics: phoneticsSchema,
@@ -39,4 +39,4 @@ export const wordInformationsSchema = z.object({
     url: z.string(),
   }),
 });
-export type WordInformations = z.infer<typeof wordInformationsSchema>;
+export type WordResults = z.infer<typeof wordResultsSchema>;

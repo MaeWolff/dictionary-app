@@ -1,14 +1,14 @@
-import { WordInformations } from "@/domain/dictionary";
+import { WordResults } from "@/domain/dictionary";
 import React from "react";
 import WordMeaningSection from "./WordMeaningSection";
 import { getPhoneticAudioUrl } from "@/domain/utils";
 import WordPhoneticAudioButton from "./WordPhoneticAudioButton";
 
-interface WordInformationsProps {
-  data: WordInformations;
+interface WordResultsProps {
+  data: WordResults;
 }
 
-export default function WordInformationsView({ data }: WordInformationsProps) {
+export default function WordResultsView({ data }: WordResultsProps) {
   const phoneticAudioUrl = getPhoneticAudioUrl(data.phonetics);
 
   return (

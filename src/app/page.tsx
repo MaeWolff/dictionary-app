@@ -2,8 +2,8 @@
 import { FormEvent, useState } from "react";
 import { Playfair_Display } from "next/font/google";
 import SearchBar from "@/components/SearchBar";
-import WordInformationsView from "@/components/home/WordInformationsView";
-import useWordInformationsQuery from "@/usecases/useWordInformationsQuery";
+import WordResultsView from "@/components/home/WordResultsView";
+import useWordResultsQuery from "@/usecases/useWordResultsQuery";
 import useDebounce from "@/utils/hooks/useDebounce";
 import WordNotFoundView from "@/components/home/WordNotFoundView";
 import WordLoadingView from "@/components/home/WordLoadingView";
@@ -24,7 +24,7 @@ export default function Home() {
   );
 
   const { data, isLoading, isError, isSuccess } =
-    useWordInformationsQuery(debouncedSearchWord);
+    useWordResultsQuery(debouncedSearchWord);
 
   function handleSubmitForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,7 +45,7 @@ export default function Home() {
       <output htmlFor="search-bar" form="search-form">
         {isLoading && <WordLoadingView />}
         {isError && <WordNotFoundView searchWord={searchWord} />}
-        {isSuccess && <WordInformationsView data={data} />}
+        {isSuccess && <WordResultsView data={data} />}
       </output>
     </main>
   );

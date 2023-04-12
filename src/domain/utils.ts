@@ -1,7 +1,7 @@
-import { WordInformations } from "./dictionary";
+import { WordResults } from "./dictionary";
 
 export function getPhoneticAudioUrl(
-  phonetics: WordInformations["phonetics"]
+  phonetics: WordResults["phonetics"]
 ): string {
   if (!phonetics) return "";
 
