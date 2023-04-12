@@ -2,7 +2,7 @@
 import invariant from "@/utils/invariant";
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 
-type ThemeType = "light" | "dark";
+export type ThemeType = "light" | "dark";
 
 export interface ThemeContextProps {
   theme: ThemeType;

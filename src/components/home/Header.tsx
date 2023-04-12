@@ -1,6 +1,7 @@
 import MoonIcon from "@/assets/icons/MoonIcon";
 import SunIcon from "@/assets/icons/SunIcon";
-import { useTheme } from "@/contexts/ThemeContext";
+import { ThemeType, useTheme } from "@/contexts/ThemeContext";
+import { ReactNode } from "react";
 
 export default function Header() {
   return (
@@ -12,16 +13,20 @@ export default function Header() {
   );
 }
 
+const MAP_THEME_TO_INVERTED_ICON: Record<ThemeType, ReactNode> = {
+  dark: <SunIcon />,
+  light: <MoonIcon />,
+};
+
 function ThemeButton() {
   const { theme, handleSwitchTheme } = useTheme();
-  const isDarkTheme = theme === "dark";
 
   return (
     <button
       className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md"
       onClick={() => handleSwitchTheme()}
     >
-      {isDarkTheme ? <SunIcon /> : <MoonIcon />}
+      {MAP_THEME_TO_INVERTED_ICON[theme]}
     </button>
   );
 }
