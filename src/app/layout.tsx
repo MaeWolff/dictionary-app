@@ -2,9 +2,9 @@
 
 import "../styles/globals.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Header from "@/components/home/Header";
-
-const queryClient = new QueryClient();
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ReactNode } from "react";
+import Layout from "@/components/Layout";
 
 export default function RootLayout({
   children,
@@ -12,13 +12,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <QueryClientProvider client={queryClient}>
-        <body>
-          <Header />
-          {children}
-        </body>
-      </QueryClientProvider>
-    </html>
+    <Providers>
+      <Layout>{children}</Layout>
+    </Providers>
+  );
+}
+
+const queryClient = new QueryClient();
+
+function Providers({ children }: { children: ReactNode }) {
+  return (
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </ThemeProvider>
   );
 }

@@ -12,7 +12,7 @@ export default function SearchBar({ onSearch, ...props }: SearchBarProps) {
   return (
     <label className="flex items-center relative">
       <input
-        className="w-full p-4 bg-zinc-800 rounded-md outline-none focus:outline-1 focus:outline-violet-500	"
+        className="w-full p-4 bg-zinc-100 dark:bg-zinc-800 rounded-md outline-none focus:outline-1 focus:outline-violet-500	"
         onChange={handleSearchInput}
         type="search"
         {...props}

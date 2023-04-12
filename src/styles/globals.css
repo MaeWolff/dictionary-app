@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background-color: white;
-  --base-text-color: rgb(7, 7, 7);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: rgb(7, 7, 7);
-    --base-text-color: white;
-  }
-}
-
 body {
   color: var(--base-text-color);
   background: var(--background-color);

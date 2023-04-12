@@ -33,7 +33,7 @@ export default function WordPhoneticAudioButton({
   return (
     <button
       onClick={() => phoneticAudio.play()}
-      className="w-16 h-16 rounded-full flex justify-center items-center text-violet-300 bg-violet-900"
+      className="w-16 h-16 rounded-full flex justify-center items-center text-violet-500 bg-violet-100 dark:text-violet-300 dark:bg-violet-900"
     >
       {isPlaying ? <PauseIcon /> : <PlayIcon />}
     </button>
