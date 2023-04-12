@@ -34,7 +34,7 @@ export default function Home() {
     <main
       className={`w-full flex min-h-screen max-w-[900px] mx-auto flex-col p-8 md:p-24 gap-8 ${playfairDisplay.variable}`}
     >
-      <form className="w-full" onSubmit={handleSubmitForm}>
+      <form className="w-full" id="search-form" onSubmit={handleSubmitForm}>
         <SearchBar
           id="search-bar"
           onSearch={setSearchWord}
@@ -42,7 +42,7 @@ export default function Home() {
         />
       </form>
 
-      <output htmlFor="search-bar">
+      <output htmlFor="search-bar" form="search-form">
         {isLoading && <WordLoadingView />}
         {isError && <WordNotFoundView searchWord={searchWord} />}
         {isSuccess && <WordInformationsView data={data} />}
