@@ -4,7 +4,11 @@ import { queryKeys } from "./queryKeys";
 import { dictionaryRepository } from "@/domain/dictionaryRepository";
 
 export default function useWordInformationsQuery(searchWord: string) {
-  return useQuery<WordInformations>(queryKeys.word.all, () =>
-    dictionaryRepository.getWordInformations(searchWord)
+  return useQuery<WordInformations>(
+    queryKeys.word.list(searchWord),
+    () => dictionaryRepository.getWordInformations(searchWord),
+    {
+      enabled: Boolean(searchWord),
+    }
   );
 }

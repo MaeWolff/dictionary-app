@@ -25,12 +25,10 @@ export default function Home() {
     isLoading,
     isError,
     isSuccess,
-    refetch,
   } = useWordInformationsQuery(debouncedSearchWord);
 
   function handleSubmitForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    refetch();
   }
 
   return (
