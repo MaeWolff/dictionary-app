@@ -1,31 +1,30 @@
 "use client";
+import { FormEvent, useState } from "react";
 import { Playfair_Display } from "next/font/google";
 import SearchBar from "@/components/SearchBar";
-import WordInformations from "@/components/home/WordInformations";
+import WordInformationsView from "@/components/home/WordInformationsView";
 import useWordInformationsQuery from "@/usecases/useWordInformationsQuery";
 import useDebounce from "@/utils/hooks/useDebounce";
-import { FormEvent, useState } from "react";
+import WordNotFoundView from "@/components/home/WordNotFoundView";
+import WordLoadingView from "@/components/home/WordLoadingView";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
   subsets: ["latin"],
 });
 
-const SEACH_DEBOUNCE_VALUE_IN_MS = 300;
+const SEACH_DEBOUNCE_VALUE_IN_MS = 500;
+const DEFAULT_SEARCH_WORD = "word";
 
 export default function Home() {
-  const [searchWord, setSearchWord] = useState<string>("Word");
+  const [searchWord, setSearchWord] = useState<string>(DEFAULT_SEARCH_WORD);
   const debouncedSearchWord = useDebounce<string>(
     searchWord,
     SEACH_DEBOUNCE_VALUE_IN_MS
   );
 
-  const {
-    data: word,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useWordInformationsQuery(debouncedSearchWord);
+  const { data, isLoading, isError, isSuccess } =
+    useWordInformationsQuery(debouncedSearchWord);
 
   function handleSubmitForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -43,21 +42,11 @@ export default function Home() {
         />
       </form>
 
-      {isLoading && <p>loading...</p>}
-      {isError && (
-        <p className="text-zinc-500">
-          No result found for{" "}
-          <b className="playfair-font text-violet-500">{debouncedSearchWord}</b>
-          . <br />
-          Please try again with another word.
-        </p>
-      )}
-
-      {isSuccess && (
-        <output htmlFor="search-bar">
-          <WordInformations searchWord={word} />
-        </output>
-      )}
+      <output htmlFor="search-bar">
+        {isLoading && <WordLoadingView />}
+        {isError && <WordNotFoundView searchWord={searchWord} />}
+        {isSuccess && <WordInformationsView data={data} />}
+      </output>
     </main>
   );
 }
