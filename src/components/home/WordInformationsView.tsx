@@ -14,8 +14,8 @@ export default function WordInformationsView({ data }: WordInformationsProps) {
           <h1 className="text-5xl font-bold playfair-font">{data.word}</h1>
           <h2 className="text-xl text-violet-500">
             {data.phonetic ??
-              data.phonetics?.[0].text ??
-              data.phonetics?.[1].text}
+              data.phonetics?.[0]?.text ??
+              data.phonetics?.[1]?.text}
           </h2>
         </div>
       </header>
