@@ -1,17 +1,11 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { Playfair_Display } from "next/font/google";
 import SearchBar from "@/components/SearchBar";
 import WordResultsView from "@/components/home/WordResultsView";
 import useWordResultsQuery from "@/usecases/useWordResultsQuery";
 import useDebounce from "@/utils/hooks/useDebounce";
 import WordNotFoundView from "@/components/home/WordNotFoundView";
 import WordLoadingView from "@/components/home/WordLoadingView";
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
-  subsets: ["latin"],
-});
 
 const SEACH_DEBOUNCE_VALUE_IN_MS = 500;
 const DEFAULT_SEARCH_WORD = "word";
@@ -32,7 +26,7 @@ export default function Home() {
 
   return (
     <main
-      className={`w-full flex min-h-screen max-w-[900px] mx-auto flex-col p-8 md:p-24 gap-8 ${playfairDisplay.variable}`}
+      className={`w-full flex min-h-screen max-w-[735px] mx-auto flex-col p-8 md:p-24 gap-8 md:gap-16`}
     >
       <form className="w-full" id="search-form" onSubmit={handleSubmitForm}>
         <SearchBar

@@ -9,8 +9,7 @@ export default function WordNotFoundView({
 }: WordNotFoundViewProps) {
   return (
     <p className="text-zinc-500">
-      No result found for{" "}
-      <b className="playfair-font text-violet-500">{searchWord}</b>
+      No result found for <b className="text-violet-500">{searchWord}</b>
       . <br />
       Please try again with another word.
     </p>

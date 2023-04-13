@@ -7,10 +7,6 @@ body {
   background: var(--background-color);
 }
 
-.playfair-font {
-  font-family: var(--font-playfair-display);
-}
-
 @layer base {
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,

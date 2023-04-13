@@ -11,7 +11,7 @@ export default function WordMeaningSection({
 }: WordMeaningSectionProps) {
   return (
     <div className="flex flex-row gap-4">
-      <h4 className="playfair-font text-zinc-500">{title}</h4>
+      <h4 className="text-zinc-500">{title}</h4>
 
       <div className="flex flex-wrap gap-2">
         {texts.map((text, index) => (

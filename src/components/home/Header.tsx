@@ -2,13 +2,17 @@ import MoonIcon from "@/assets/icons/MoonIcon";
 import SunIcon from "@/assets/icons/SunIcon";
 import { ThemeType, useTheme } from "@/contexts/ThemeContext";
 import { ReactNode } from "react";
+import ChooseFontDropdown from "./ChooseFontDropdown";
 
 export default function Header() {
   return (
-    <header className="w-full flex max-w-[900px] justify-between items-center mx-auto mt-8 flex-row px-8 md:px-24 gap-8">
+    <header className="w-full flex max-w-[735px] justify-between items-center mx-auto mt-8 flex-row px-8 md:px-24 gap-8">
       <p>mw.</p>
 
-      <ThemeButton />
+      <nav className="flex gap-2">
+        <ChooseFontDropdown />
+        <ThemeButton />
+      </nav>
     </header>
   );
 }
