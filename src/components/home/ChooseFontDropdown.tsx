@@ -25,7 +25,7 @@ export default function ChooseFontDropdown() {
   return (
     <div className="relative">
       <button
-        className={`group/container px-4 py-2 font-${font} font-medium rounded-m`}
+        className="group/container px-4 py-2 font-medium rounded-m"
         onMouseEnter={toggleDropdown}
         onMouseLeave={toggleDropdown}
       >

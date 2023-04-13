@@ -29,7 +29,7 @@ export default function WordResultsView({ data }: WordResultsProps) {
       </header>
 
       {data.meanings.map((meaning, index) => (
-        <section key={index} className="w-full flex flex-col gap-12">
+        <section key={index} className="w-full flex flex-col gap-10">
           <h3 className="flex items-center gap-6 text-xl after:content-[' '] after:block after:w-full after:h-[1px] after:bg-zinc-700">
             {meaning.partOfSpeech}
           </h3>
