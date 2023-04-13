@@ -1,24 +1,16 @@
+import { FONT_STYLES, FontStyles, useFont } from "@/contexts/FontContext";
 import { useState } from "react";
 
-export enum FONT_STYLES {
-  serif = "Serif",
-  sans = "Sans Serif",
-  mono = "Mono",
-}
-export type FontStyles = keyof typeof FONT_STYLES;
-
 export default function ChooseFontDropdown() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string>(
-    FONT_STYLES.serif
-  );
+  const { font, handleSwitchFont } = useFont();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleSelectFont = (option: string) => {
-    setSelectedOption(option);
+  const handleSelectFont = (option: FontStyles) => {
+    handleSwitchFont(option);
     setIsOpen(false);
   };
 
@@ -33,11 +25,11 @@ export default function ChooseFontDropdown() {
   return (
     <div className="relative">
       <button
-        className="group/container px-4 py-2 font-serif font-medium rounded-m"
+        className={`group/container px-4 py-2 font-${font} font-medium rounded-m`}
         onMouseEnter={toggleDropdown}
         onMouseLeave={toggleDropdown}
       >
-        {FONT_STYLES[selectedOption as FontStyles]}
+        {FONT_STYLES[font]}
 
         <svg
           className="inline-block w-4 h-4 ml-2 -mr-1 group-hover/container:text-violet-500"
@@ -63,8 +55,8 @@ export default function ChooseFontDropdown() {
             return (
               <DropdownItem
                 key={key}
-                isSelected={selectedOption === key}
-                onClick={() => handleSelectFont(key)}
+                isSelected={font === key}
+                onClick={() => handleSelectFont(key as FontStyles)}
                 option={value}
               />
             );
