@@ -3,6 +3,7 @@ import React from "react";
 import WordMeaningSection from "./WordMeaningSection";
 import { getPhoneticAudioUrl } from "@/domain/utils";
 import WordPhoneticAudioButton from "./WordPhoneticAudioButton";
+import ExternalLinkIcon from "@/assets/icons/ExternalLinkIcon";
 
 interface WordResultsProps {
   data: WordResults;
@@ -52,6 +53,22 @@ export default function WordResultsView({ data }: WordResultsProps) {
           )}
         </section>
       ))}
+
+      <section className="flex flex-col md:flex-row gap-4 border-t-[1px] pt-8 border-zinc-700 text-sm">
+        <h4 className="text-zinc-500 underline underline-offset-4">Source</h4>
+        <a
+          className="flex flex-row gap-2 underline underline-offset-4 items-center transition duration-200 hover:opacity-40"
+          target="_blank"
+          rel="noreferrer"
+          href={data.sourceUrls[0]}
+        >
+          {data.sourceUrls[0]}
+
+          <span className="w-5 h-5 text-zinc-500">
+            <ExternalLinkIcon />
+          </span>
+        </a>
+      </section>
     </div>
   );
 }
