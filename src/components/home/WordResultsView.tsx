@@ -1,5 +1,5 @@
 import { WordResults } from "@/domain/dictionary";
-import React from "react";
+import React, { Fragment } from "react";
 import WordMeaningSection from "./WordMeaningSection";
 import { getPhoneticAudioUrl } from "@/domain/utils";
 import WordPhoneticAudioButton from "./WordPhoneticAudioButton";
@@ -39,7 +39,12 @@ export default function WordResultsView({ data }: WordResultsProps) {
             <h4 className="text-zinc-500">Meaning</h4>
             <ul className="marker:text-violet-500 flex flex-col gap-2 list-disc">
               {meaning.definitions.map((definition, index) => (
-                <li key={index}>{definition.definition}</li>
+                <Fragment key={index}>
+                  <li>{definition.definition}</li>
+                  {definition.example && (
+                    <p className="ml-4 text-zinc-500">{definition.example}</p>
+                  )}
+                </Fragment>
               ))}
             </ul>
           </div>
