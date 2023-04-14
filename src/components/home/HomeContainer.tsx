@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 const SEACH_DEBOUNCE_VALUE_IN_MS = 500;
-const DEFAULT_SEARCH_WORD = "word";
+const DEFAULT_SEARCH_WORD = "keyboard";
 
 export default function HomeContainer() {
   const router = useRouter();
