@@ -42,7 +42,9 @@ export default function WordResultsView({ data }: WordResultsProps) {
                 <Fragment key={index}>
                   <li>{definition.definition}</li>
                   {definition.example && (
-                    <p className="ml-4 text-zinc-500">{definition.example}</p>
+                    <li className="ml-4 text-zinc-500 list-none">
+                      {definition.example}
+                    </li>
                   )}
                 </Fragment>
               ))}
