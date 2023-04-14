@@ -1,4 +1,3 @@
-import createQueryString from "@/utils/createQueryString";
 import React, { ChangeEvent, HTMLProps } from "react";
 
 type SearchBarProps = {
