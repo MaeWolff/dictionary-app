@@ -6,12 +6,18 @@ import useWordResultsQuery from "@/usecases/useWordResultsQuery";
 import useDebounce from "@/utils/hooks/useDebounce";
 import WordNotFoundView from "@/components/home/WordNotFoundView";
 import WordLoadingView from "@/components/home/WordLoadingView";
+import { useSearchParams } from "next/navigation";
 
 const SEACH_DEBOUNCE_VALUE_IN_MS = 500;
 const DEFAULT_SEARCH_WORD = "word";
 
 export default function Home() {
-  const [searchWord, setSearchWord] = useState<string>(DEFAULT_SEARCH_WORD);
+  const searchParams = useSearchParams();
+  const searchWordFromParams = searchParams.get("word");
+
+  const [searchWord, setSearchWord] = useState<string>(
+    searchWordFromParams ?? DEFAULT_SEARCH_WORD
+  );
   const debouncedSearchWord = useDebounce<string>(
     searchWord,
     SEACH_DEBOUNCE_VALUE_IN_MS
