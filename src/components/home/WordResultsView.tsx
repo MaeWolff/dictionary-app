@@ -37,7 +37,7 @@ export default function WordResultsView({ data }: WordResultsProps) {
 
           <div className="flex flex-col gap-6">
             <h4 className="text-zinc-500">Meaning</h4>
-            <ul className="flex flex-col gap-2 list-disc">
+            <ul className="marker:text-violet-500 flex flex-col gap-2 list-disc">
               {meaning.definitions.map((definition, index) => (
                 <li key={index}>{definition.definition}</li>
               ))}
